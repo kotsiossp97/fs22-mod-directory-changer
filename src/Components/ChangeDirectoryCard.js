@@ -1,10 +1,11 @@
 import { Button, Card, CardActions, CardContent, CardHeader, Container, MenuItem, Select, Typography } from "@mui/material"
-import directories from '../Global/Directories.json'
-import { useState } from "react"
+
+import { useEffect, useState } from "react"
+import { getDirectories } from "../Global/DirectoryFunctions"
 
 const ChangeDirectoryCard = (props) => {
     const [newDir, setNewDir] = useState("Default")
-
+    const [directories, setDirectories] = useState([])
     const handleDirSelChg = (e) => {
         setNewDir(e.target.value)
     }
@@ -13,6 +14,14 @@ const ChangeDirectoryCard = (props) => {
         window.electronApi.changeDirectory(newDir)
         props.refresh()
     }
+
+    useEffect(()=>{
+      getDirectories().then((directories)=>{
+        console.log(directories)
+        setDirectories(directories)
+      })
+    }, [])
+
 
     return (
         <Container maxWidth="md" sx={{ paddingTop: 5}}>

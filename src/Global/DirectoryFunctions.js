@@ -21,7 +21,10 @@ export const getCurrentDir = async ()=>{
 }
 
 
-export const getIsOverrideEnabled = () => {
+export const getDirectories = async () => {
 
+    const response = await fetch(process.env.PUBLIC_URL+"/Directories.json")
+    const text = await response.json()
 
+    return text
 }

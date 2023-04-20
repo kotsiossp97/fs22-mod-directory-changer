@@ -1,17 +1,17 @@
 import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, Tooltip } from '@mui/material'
 import React, { useEffect, useMemo, useState } from 'react'
-import Directories from '../Global/Directories.json'
 import MaterialReactTable from 'material-react-table';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import NewDirModal from './NewDirModal';
 import { Delete, Edit } from '@mui/icons-material';
+import { getDirectories } from '../Global/DirectoryFunctions';
 
 
 
 const EditDirectoriesDialog = (props) => {
     const [createModalOpen, setCreateModalOpen] = useState(false)
-    const [tableData, setTableData] = useState(Directories.slice(1,Directories.length))
-
+    const [Directories, setDirectories] = useState([])
+    const [tableData, setTableData] = useState([])
     const columns = useMemo(()=>(
         [
             {
@@ -24,6 +24,14 @@ const EditDirectoriesDialog = (props) => {
             }
         ]
     ), [])
+
+    useEffect(()=>{
+        getDirectories().then((directories)=>{
+            setDirectories(directories)
+            setTableData(Directories.slice(1,Directories.length))
+        })
+
+    },[])
     
     const defaultDirObj = Directories[0]
     

@@ -95,7 +95,7 @@ const openPath = (path) => {
 
 
 const writeDirectories = (dirs)=>{
-  const file = path.resolve('./src/Global/Directories.json')
+  const file = path.join(__dirname,'Directories.json')
   // console.log(file)
   fs.writeFileSync(file, dirs)
 }

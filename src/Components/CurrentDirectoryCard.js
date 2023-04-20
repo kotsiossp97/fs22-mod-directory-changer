@@ -1,9 +1,17 @@
 import { Button, Card, CardActions, CardContent, CardHeader, Container, Typography } from '@mui/material'
-import directories from '../Global/Directories.json'
+import { getDirectories } from '../Global/DirectoryFunctions'
+import { useEffect, useState } from 'react'
 
 const CurrentDirectoryCard = (props) => {
     const currentDir = props.currentDir
     const isActiveOverride = props.isActiveOverride
+    const [directories, setDirectories] = useState([])
+
+    useEffect(()=>{
+      getDirectories().then((directories)=>{
+        setDirectories(directories)
+      })
+    }, [])
 
     const currentDirStr = ()=>{
         if(isActiveOverride){

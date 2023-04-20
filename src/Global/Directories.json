@@ -1,1 +1,14 @@
-[{"name":"Default Directory","path":"Default"},{"name":"Google Drive Directory","path":"C:\\Users\\kotsi\\My Drive\\fs22Mods"},{"name":"FSMiner Mods Directory","path":"D:\\FSMinerMods22"}]
+[
+    {
+        "name": "Default Directory",
+        "path": "Default"
+    },
+    {
+        "name": "C Drive",
+        "path": "C:\\"
+    },
+    {
+        "name": "D Drive",
+        "path": "D:\\"
+    }
+]

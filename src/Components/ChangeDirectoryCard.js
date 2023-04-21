@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { getDirectories } from "../Global/DirectoryFunctions"
 
 const ChangeDirectoryCard = (props) => {
-    const [newDir, setNewDir] = useState("Default")
+    const [newDir, setNewDir] = useState("default")
     const [directories, setDirectories] = useState([])
     const handleDirSelChg = (e) => {
         setNewDir(e.target.value)
@@ -17,10 +17,9 @@ const ChangeDirectoryCard = (props) => {
 
     useEffect(()=>{
       getDirectories().then((directories)=>{
-        console.log(directories)
         setDirectories(directories)
       })
-    }, [])
+    }, [directories])
 
 
     return (
@@ -30,7 +29,7 @@ const ChangeDirectoryCard = (props) => {
             <CardContent>
               <Select value={newDir} onChange={handleDirSelChg}>
                 {directories.map( dir => (
-                  <MenuItem value={dir.path} id={dir.name}>{dir.name}</MenuItem>
+                  <MenuItem value={dir.path} key={dir.name}>{dir.name}</MenuItem>
                 ))}
               </Select>
               <Typography variant="caption" display="block" sx={{color: "text.disabled"}}>You can edit the available directories from the menu above.</Typography>

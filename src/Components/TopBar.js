@@ -43,7 +43,7 @@ const TopBar = (props) => {
 
     return (
         <Box sx={{ flexGrow: 1 }} >
-          <AppBar position="static"  style={{"-webkit-app-region": "drag"}} >
+          <AppBar position="static"  style={{ WebkitAppRegion: "drag"}} >
             <Toolbar sx={{marginRight: 15}}>
               <IconButton
                 size="large"
@@ -52,7 +52,7 @@ const TopBar = (props) => {
                 aria-label="menu"
                 sx={{ mr: 2 }}
                 onClick={handleMenuClick}
-                style={{"-webkit-app-region": "no-drag"}}
+                style={{WebkitAppRegion: "no-drag"}}
               >
                 <MenuIcon />
               </IconButton>
@@ -61,9 +61,9 @@ const TopBar = (props) => {
               </Menu>
               <FSIcon />
               <Typography variant="h5" fontWeight="bold" sx={{ flexGrow: 1, letterSpacing: '.2rem' }}>FS22 Mod Directory Changer</Typography>
-              <DarkModeSwitch handler={props.darkThemeHandler} style={{"-webkit-app-region": "no-drag"}}/>
+              <DarkModeSwitch handler={props.darkThemeHandler} style={{WebkitAppRegion: "no-drag"}}/>
 
-              <Box position="fixed" top={0} right={0} style={{"-webkit-app-region": "no-drag"}}>
+              <Box position="fixed" top={0} right={0} style={{WebkitAppRegion: "no-drag"}}>
                 <ButtonGroup variant="text"  size="small">
                   <Button onClick={handleMinimize} color="secondary"><Minimize /></Button>
                   <Button onClick={handleMaximize} color="secondary"><CropSquare /></Button>

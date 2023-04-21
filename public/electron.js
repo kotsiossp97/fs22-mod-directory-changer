@@ -3,7 +3,7 @@ const path = require('path');
 const { app, BrowserWindow, ipcMain, shell, dialog } = require('electron');
 const isDev = require('electron-is-dev');
 const fs = require('fs');
-
+const settings = require("electron-settings")
 
 const DEFAULT_DIR = app.getPath("documents") + "\\My Games\\FarmingSimulator2022\\mods"
 const FS_SETTINGS_PATH = app.getPath("documents") + "\\My Games\\FarmingSimulator2022\\gameSettings.xml"
@@ -93,11 +93,19 @@ const openPath = (path) => {
   }
 }
 
+const getDirectories = () => {
+
+  const directories = settings.getSync();
+
+  return directories
+}
 
 const writeDirectories = (dirs)=>{
-  const file = path.join(__dirname,'Directories.json')
-  // console.log(file)
-  fs.writeFileSync(file, dirs)
+  // const file = path.join(__dirname,'Directories.json')
+  // // console.log(file)
+  // fs.writeFileSync(file, dirs)
+
+  settings.setSync(JSON.parse(dirs))
 }
 
 const changeDirectory = (newDir) => {
@@ -138,6 +146,24 @@ function createWindow() {
     },
   });
 
+  // if empty directories, initialize
+  const directories = settings.getSync()
+  if( ! directories.length){
+    settings.setSync([
+      {
+        name: "Default Directory",
+        path: "default"
+      },
+      {
+        name: "C Drive",
+        path: "C:\\"
+      },
+      {
+        name: "D Drive",
+        path: "D:\\"
+      }
+    ])
+  }
 
   const folderDialog = () => {
     return dialog.showOpenDialogSync(win, { properties: ["openDirectory"]})
@@ -166,6 +192,7 @@ function createWindow() {
   ipcMain.handle('changeDirectory', (ev,dir)=> changeDirectory(dir) )
   ipcMain.handle('openPath', (ev,path)=> openPath(path) )
   ipcMain.handle("folderDialog", () => folderDialog() )
+  ipcMain.handle("getDirectories", () => getDirectories() )
   ipcMain.handle("writeDirectories", (ev,dirs)=> writeDirectories(dirs))
   ipcMain.handle("exitApp", () => app.quit())
   ipcMain.handle("minimize", () => Minimize())

@@ -23,8 +23,11 @@ export const getCurrentDir = async ()=>{
 
 export const getDirectories = async () => {
 
-    const response = await fetch(process.env.PUBLIC_URL+"/Directories.json")
-    const text = await response.json()
+    const directories = await window.electronApi.getDirectories()
+    return directories
+    
+    // const response = await fetch(process.env.PUBLIC_URL+"/Directories.json")
+    // const text = await response.json()
 
-    return text
+    // return text
 }

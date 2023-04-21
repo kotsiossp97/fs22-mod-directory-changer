@@ -30,8 +30,7 @@ const EditDirectoriesDialog = (props) => {
             setDirectories(directories)
             setTableData(Directories.slice(1,Directories.length))
         })
-
-    },[])
+    },[props.open])
     
     const defaultDirObj = Directories[0]
     
@@ -44,7 +43,8 @@ const EditDirectoriesDialog = (props) => {
     }
 
     const handleSaveNewDir = (data) => {
-        setTableData((prev)=> [...prev, data])
+        console.log(data)
+        setTableData((prev)=> [...prev, data] )
         handleCreateModalClose()
     }
 
@@ -67,11 +67,6 @@ const EditDirectoriesDialog = (props) => {
         props.closeHandler()
     }
     
-    useEffect(()=>{
-        setTableData(Directories.slice(1,Directories.length))
-    },[props.open])
-
-
 
     return (
         <Dialog open={props.open} onClose={props.closeHandler} fullWidth maxWidth="sm">

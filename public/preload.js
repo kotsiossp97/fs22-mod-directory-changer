@@ -6,6 +6,7 @@ contextBridge.exposeInMainWorld('electronApi', {
     changeDirectory: (dir) => ipcRenderer.invoke('changeDirectory', dir),
     openPath: (path)=> ipcRenderer.invoke("openPath", path),
     folderDialog: () => ipcRenderer.invoke("folderDialog"),
+    getDirectories: () => ipcRenderer.invoke("getDirectories"),
     writeDirectories: (dirs) => ipcRenderer.invoke("writeDirectories", dirs),
     launchFS: () => ipcRenderer.invoke("launchFS"),
     minimize: () => ipcRenderer.invoke("minimize"),

@@ -11,7 +11,7 @@ const CurrentDirectoryCard = (props) => {
       getDirectories().then((directories)=>{
         setDirectories(directories)
       })
-    }, [])
+    }, [directories])
 
     const currentDirStr = ()=>{
         if(isActiveOverride){

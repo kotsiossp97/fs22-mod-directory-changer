@@ -33,7 +33,7 @@ const CurrentDirectoryCard = (props) => {
     }
 
     const handleOpenDir = () => {
-        window.electronApi.openPath(currentDir)
+        window.electronApi.openPath(!isActiveOverride?"default":currentDir)
     }
 
     return (

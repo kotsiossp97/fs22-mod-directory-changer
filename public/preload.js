@@ -12,4 +12,5 @@ contextBridge.exposeInMainWorld('electronApi', {
     minimize: () => ipcRenderer.invoke("minimize"),
     maximize: () => ipcRenderer.invoke("maximize"),
     exitApp: () => ipcRenderer.invoke("exitApp"),
+    settingsFileExists: () => ipcRenderer.invoke("settingsFileExists"),
 })

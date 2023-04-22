@@ -1,6 +1,7 @@
 {
   "name": "fs22-mod-directory-changer",
   "version": "0.1.2",
+  "description": "Handle the directory of the mods for the game Farming Simulator 22.",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.6",
@@ -28,7 +29,7 @@
     "dev": "concurrently -k \"npm start BROWSER=none\" \"npm:electron\"",
     "electron": "wait-on tcp:3000 && electron .",
     "package": "electron-builder build --win -c.extraMetadata.main=build/electron.js --publish never",
-    "publish": "electron-builder build --mac --win --publish always"
+    "publish": "electron-builder build --win --publish always"
   },
   "eslintConfig": {
     "extends": [

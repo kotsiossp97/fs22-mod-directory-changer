@@ -13,6 +13,11 @@ const readFile = () =>{
   return fs.readFileSync(FS_SETTINGS_PATH, 'utf-8')
 }
 
+
+const settingsFileExists = () => {
+  return fs.existsSync(FS_SETTINGS_PATH)
+}
+
 const writeFile = (newContent) => {
   fs.writeFileSync(FS_SETTINGS_PATH, newContent)
 }
@@ -198,6 +203,7 @@ function createWindow() {
   ipcMain.handle("minimize", () => Minimize())
   ipcMain.handle("maximize", () => Maximize())
   ipcMain.handle("launchFS", () => launchFS())
+  ipcMain.handle("settingsFileExists", () => settingsFileExists() )
 
   win.loadURL(
     isDev

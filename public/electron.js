@@ -85,7 +85,7 @@ const getCurrentDir = () => {
 }
 
 const openPath = (path) => {
-  if(path === "" || path === " "){
+  if( path === "default" || path === "" || path === " "){
     shell.openPath(DEFAULT_DIR)
   }
   else{

@@ -24,7 +24,7 @@ The available directories on first launch are for reference.
 You can edit the available directories, through the option under the menu button on the app bar.
 
 ## Download
-You can download the app through the Releases link of GitHub.
+You can download the app through the `Assets` Section in the Releases link of GitHub.
 
 # Screenshots
 ![Alt text](/screenshots/screen1.png?raw=true "Screenshot 1")

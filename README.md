@@ -7,6 +7,11 @@ This a small app developed using React and Electron.
 
 It's purpose is to handle the directory of the mods for the game Farming Simulator 22.
 
+It modifies the file `gameSettings.xml` located in path:
+```
+Documents\My Games\FarmingSimulator2022\gameSettings.xml
+```
+
 ## Features
 - Enable / Disable mod directory override
 - Quickly change the active mod directory
